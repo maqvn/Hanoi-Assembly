@@ -32,18 +32,18 @@ _start:
     call write_pergunta
     call read_discos
 
-    call hanoi_ABC
+    call hanoi
     
     jmp encerrarPrograma
 
 
-hanoi_ABC:
+hanoi:
     mov eax, [num_discos]
     cmp eax, 49
-    je um_disco_ABC
-    jmp mais_de_um_disco_ABC
+    je um_disco
+    jmp mais_de_um_disco
 
-    um_disco_ABC:
+    um_disco:
 
         mov ecx, movimento_1
         mov edx, tam_mov_1
@@ -76,11 +76,11 @@ hanoi_ABC:
         ret
 
 
-    mais_de_um_disco_ABC:
+    mais_de_um_disco:
 
         call diminuir_num_discos
         call trocar_destino_auxiliar
-        call hanoi_ABC
+        call hanoi
         call trocar_destino_auxiliar
         call aumentar_num_discos
 
@@ -114,7 +114,7 @@ hanoi_ABC:
 
         call diminuir_num_discos
         call trocar_auxiliar_origem
-        call hanoi_ABC
+        call hanoi
         call trocar_auxiliar_origem
         call aumentar_num_discos
 
