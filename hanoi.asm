@@ -1,7 +1,7 @@
 ; nasm -f elf32 hanoi.asm
 ; ld -m elf_i386 -o hanoi hanoi.o
 
-section	.data
+section .data
     pergunta db "Digite o número de discos (1 a 99): ", 0
     tam_pergunta equ $-pergunta
 
@@ -25,8 +25,8 @@ section	.data
 section .bss
     num_discos resb 3
 
-section	.text
-	global _start
+section .text
+    global _start
 
 _start:
     call write_pergunta
@@ -360,16 +360,11 @@ hanoi_BCA:
         mov edx, 1
         call write_movimento
 
-        mov eax, [num_discos]
-        dec eax
-        mov [num_discos], eax
+        call diminuir_num_discos
 
         call hanoi_CBA
 
-        mov eax, [num_discos]
-        inc eax
-        mov [num_discos], eax
-
+        call aumentar_num_discos
         ret
     
 
@@ -652,6 +647,6 @@ aumentar_num_discos:
 
 encerrarPrograma:
 
-	mov eax, 1 ; identificador da chamada sys_exit
+    mov eax, 1 ; identificador da chamada sys_exit
     mov ebx, 0  ; sem erros 
     int 0x80
