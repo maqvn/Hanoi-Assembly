@@ -79,93 +79,9 @@ hanoi_ABC:
     mais_de_um_disco_ABC:
 
         call diminuir_num_discos
-
-        call hanoi_ACB
-
-        call aumentar_num_discos
-
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_origem
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_destino
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        call diminuir_num_discos
-
-        call hanoi_BAC
-
-        call aumentar_num_discos
-
-        ret
-
-
-
-hanoi_ACB:
-
-    mov eax, [num_discos]
-    cmp eax, 49
-    je um_disco_ACB
-    jmp mais_de_um_disco_ACB
-
-    um_disco_ACB:
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_origem
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_auxiliar
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        ret
-
-
-    mais_de_um_disco_ACB:
-        call diminuir_num_discos
-
+        call trocar_destino_auxiliar
         call hanoi_ABC
-
+        call trocar_destino_auxiliar
         call aumentar_num_discos
 
         mov ecx, movimento_1
@@ -188,88 +104,6 @@ hanoi_ACB:
         mov edx, tam_mov_3
         call write_movimento
 
-        mov ecx, torre_auxiliar
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        call diminuir_num_discos
-
-        call hanoi_CAB
-
-        call aumentar_num_discos
-
-        ret
-
-hanoi_BAC:
-
-    mov eax, [num_discos]
-    cmp eax, 49
-    je um_disco_BAC
-    jmp mais_de_um_disco_BAC
-
-    um_disco_BAC:
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_auxiliar
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_destino
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        ret
-
-
-    mais_de_um_disco_BAC:
-        call diminuir_num_discos
-
-        call hanoi_BCA
-
-        call aumentar_num_discos
-
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_auxiliar
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
         mov ecx, torre_destino
         mov edx, 1
         call write_movimento
@@ -279,260 +113,12 @@ hanoi_BAC:
         call write_movimento
 
         call diminuir_num_discos
-
+        call trocar_auxiliar_origem
         call hanoi_ABC
-
+        call trocar_auxiliar_origem
         call aumentar_num_discos
 
         ret
-
-hanoi_BCA:
-
-    mov eax, [num_discos]
-    cmp eax, 49
-    je um_disco_BCA
-    jmp mais_de_um_disco_BCA
-
-    um_disco_BCA:
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_auxiliar
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_origem
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        ret
-
-
-    mais_de_um_disco_BCA:
-        call diminuir_num_discos
-
-        call hanoi_BAC
-
-        call aumentar_num_discos
-
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_auxiliar
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_origem
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        call diminuir_num_discos
-
-        call hanoi_CBA
-
-        call aumentar_num_discos
-        ret
-    
-
-hanoi_CAB:
-
-    mov eax, [num_discos]
-    cmp eax, 49
-    je um_disco_CAB
-    jmp mais_de_um_disco_CAB
-
-    um_disco_CAB:
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_destino
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_auxiliar
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        ret
-
-
-    mais_de_um_disco_CAB:
-        call diminuir_num_discos
-
-        call hanoi_CBA
-
-        call aumentar_num_discos
-
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_destino
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_auxiliar
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        call diminuir_num_discos
-
-        call hanoi_ACB
-
-        call aumentar_num_discos
-
-        ret
-
-hanoi_CBA:
-
-    mov eax, [num_discos]
-    cmp eax, 49
-    je um_disco_CBA
-    jmp mais_de_um_disco_CBA
-
-    um_disco_CBA:
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_destino
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_origem
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        ret
-
-
-    mais_de_um_disco_CBA:
-        call diminuir_num_discos
-
-        call hanoi_CAB
-
-        call aumentar_num_discos
-
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_destino
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_origem
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
-        call diminuir_num_discos
-        
-        call hanoi_BCA
-
-        call aumentar_num_discos
-
-        ret
-
-
 
 write_movimento:
     mov eax, 4
@@ -627,6 +213,7 @@ cast_int_string:
 
 diminuir_num_discos:
     
+
     call cast_string_int
     mov eax, [num_discos]
     dec eax
@@ -643,6 +230,22 @@ aumentar_num_discos:
     mov [num_discos], eax
     call cast_int_string
 
+    ret
+
+trocar_destino_auxiliar:
+    mov eax, [torre_destino]
+    mov ebx, [torre_auxiliar]
+    mov [torre_destino], bl
+    mov [torre_auxiliar], al
+
+    ret
+
+trocar_auxiliar_origem:
+    mov eax, [torre_origem]
+    mov ebx, [torre_auxiliar]
+    mov [torre_origem], bl
+    mov [torre_auxiliar], al
+    
     ret
 
 encerrarPrograma:
