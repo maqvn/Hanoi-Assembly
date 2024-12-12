@@ -1,7 +1,4 @@
-; compilar: Transformar o programa em liguagem de máquina
 ; nasm -f elf32 hanoi.asm
-
-; linkeditar: Transformar o programa em linguagem de máquina para um executável
 ; ld -m elf_i386 -o hanoi hanoi.o
 
 section	.data
