@@ -145,7 +145,7 @@ read_discos:
     mov edx, 3
     int 0x80
 
-    cmp word [num_discos + 1], 10
+    cmp byte [num_discos + 1], 10
     je num_de_um_digito
 
     mov byte [num_discos + 2], 0
@@ -190,7 +190,7 @@ cast_int_string:
     mov ebx, 10
     mov edx, 0
     
-    div ebx ; rax = dezena, rdx = unidade
+    div ebx ; eax = quociente, edx = resto
 
     add dl, '0'
 
