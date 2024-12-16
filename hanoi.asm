@@ -6,12 +6,14 @@ section .data
     tam_pergunta equ $-pergunta
 
     movimento_1 db 'Mova o disco ', 0
-    movimento_2 db ' da torre ', 0
-    movimento_3 db ' para a torre ', 0
+    tam_mov_1 equ $-movimento_1
 
-    tam_mov_1 equ 13
-    tam_mov_2 equ 10
-    tam_mov_3 equ 14
+    movimento_2 db ' da torre ', 0
+    tam_mov_2 equ $-movimento_2
+    
+    movimento_3 db ' para a torre ', 0
+    tam_mov_3 equ $-movimento_3
+
 
     torre_origem db 'A', 0
     torre_auxiliar db 'B', 0
