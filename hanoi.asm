@@ -39,40 +39,13 @@ _start:
 
 hanoi:
     mov eax, [num_discos]
-    cmp eax, 49
+    cmp eax, '1'
     je um_disco
     jmp mais_de_um_disco
 
     um_disco:
 
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_origem
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_destino
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
-
+       call mover_disco
         ret
 
 
@@ -84,33 +57,7 @@ hanoi:
         call trocar_destino_auxiliar
         call aumentar_num_discos
 
-        mov ecx, movimento_1
-        mov edx, tam_mov_1
-        call write_movimento
-
-        mov ecx, num_discos
-        mov edx, tam_num
-        call write_movimento
-
-        mov ecx, movimento_2
-        mov edx, tam_mov_2
-        call write_movimento
-        
-        mov ecx, torre_origem
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, movimento_3
-        mov edx, tam_mov_3
-        call write_movimento
-
-        mov ecx, torre_destino
-        mov edx, 1
-        call write_movimento
-
-        mov ecx, newline
-        mov edx, 1
-        call write_movimento
+        call mover_disco
 
         call diminuir_num_discos
         call trocar_auxiliar_origem
@@ -120,12 +67,35 @@ hanoi:
 
         ret
 
-write_movimento:
-    mov eax, 4
-    mov ebx, 1
-    int 0x80
+mover_disco:
+    mov ecx, movimento_1
+    mov edx, tam_mov_1
+    call write_movimento
 
-    ret
+    mov ecx, num_discos
+    mov edx, tam_num
+    call write_movimento
+
+    mov ecx, movimento_2
+    mov edx, tam_mov_2
+    call write_movimento
+    
+    mov ecx, torre_origem
+    mov edx, 1
+    call write_movimento
+
+    mov ecx, movimento_3
+    mov edx, tam_mov_3
+    call write_movimento
+
+    mov ecx, torre_destino
+    mov edx, 1
+    call write_movimento
+
+    mov ecx, newline
+    mov edx, 1
+    call write_movimento
+
 
 write_pergunta:
     
@@ -157,6 +127,13 @@ read_discos:
     
     return:
         ret
+
+write_movimento:
+    mov eax, 4
+    mov ebx, 1
+    int 0x80
+
+    ret
 
 cast_string_int:
     mov eax, 0
@@ -233,18 +210,18 @@ aumentar_num_discos:
     ret
 
 trocar_destino_auxiliar:
-    mov eax, [torre_destino]
-    mov ebx, [torre_auxiliar]
-    mov [torre_destino], bl
+    mov al, [torre_destino]
+    mov bl, [torre_auxiliar]
     mov [torre_auxiliar], al
+    mov [torre_destino], bl
 
     ret
 
 trocar_auxiliar_origem:
-    mov eax, [torre_origem]
-    mov ebx, [torre_auxiliar]
-    mov [torre_origem], bl
+    mov al, [torre_origem]
+    mov bl, [torre_auxiliar]
     mov [torre_auxiliar], al
+    mov [torre_origem], bl
     
     ret
 
