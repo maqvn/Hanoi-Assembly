@@ -45,7 +45,7 @@ hanoi:
 
     um_disco:
 
-       call mover_disco
+        call mover_disco
         ret
 
 
@@ -68,6 +68,7 @@ hanoi:
         ret
 
 mover_disco:
+    
     mov ecx, movimento_1
     mov edx, tam_mov_1
     call write_movimento
@@ -95,6 +96,8 @@ mover_disco:
     mov ecx, newline
     mov edx, 1
     call write_movimento
+
+    ret
 
 
 write_pergunta:
