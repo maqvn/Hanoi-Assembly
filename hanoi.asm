@@ -1,4 +1,6 @@
+; montar
 ; nasm -f elf32 hanoi.asm
+; linkeditar
 ; ld -m elf_i386 -o hanoi hanoi.o
 
 section .data
