@@ -11,8 +11,8 @@ _Esse código escrito em assembly NASM x86 resolve a torre com 1 até 99 discos.
 
 2. Com o arquivo aberto, abra o terminal e execute os seguintes comandos:
 
-  nasm -f elf32 hanoi.asm
+    nasm -f elf32 hanoi.asm
   
-  ld -m elf_i386 -o hanoi hanoi.o
+    ld -m elf_i386 -o hanoi hanoi.o
 
 3. Se tudo correu conforme o esperado, devem ter sido criados 2 arquivos, hanoi.o e hanoi, agora basta digitar: " ./hanoi ".
