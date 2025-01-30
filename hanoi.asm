@@ -1,8 +1,3 @@
-; montar
-; nasm -f elf32 hanoi.asm
-; linkeditar
-; ld -m elf_i386 -o hanoi hanoi.o
-
 section .data
     pergunta db "Digite o número de discos (1 a 99): ", 0
     tam_pergunta equ $-pergunta
