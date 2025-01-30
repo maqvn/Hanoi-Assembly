@@ -2,6 +2,9 @@ section .data
     pergunta db "Digite o número de discos (1 a 99): ", 0
     tam_pergunta equ $-pergunta
 
+    concluido db "Concluído!", 10
+    tam_concluido equ $-concluido
+
     movimento_1 db 'Mova o disco ', 0
     tam_mov_1 equ $-movimento_1
 
@@ -42,13 +45,12 @@ hanoi:
     je um_disco
     jmp mais_de_um_disco
 
-    um_disco:
+    um_disco: ; caso só tenha 1 disco na torre atual
 
         call mover_disco
         ret
 
-
-    mais_de_um_disco:
+    mais_de_um_disco: ; caso tenha mais de 1 disco na torre atual
 
         call diminuir_num_discos
         call trocar_destino_auxiliar
@@ -66,7 +68,7 @@ hanoi:
 
         ret
 
-mover_disco:
+mover_disco:  ; printa o movimento do disco da origem atual para o destino atual
     
     mov ecx, movimento_1
     mov edx, tam_mov_1
@@ -99,7 +101,7 @@ mover_disco:
     ret
 
 
-write_pergunta:
+write_pergunta: ; escreve na tela informando para digitar o número de discos entre 1 e 99
     
     mov eax, 4 ; identificador da chamada sys_write
     mov ebx, 1 ; saída padrão
@@ -109,7 +111,7 @@ write_pergunta:
 
     ret
 
-read_discos:
+read_discos: ; lê a entrada do usuário e tira o caracte "newline" e o transforma em nulo
 
     mov eax, 3 ; identificador da chamada sys_read
     mov ebx, 0 ; entrada padrão
@@ -130,14 +132,14 @@ read_discos:
     return:
         ret
 
-write_movimento:
+write_movimento: ; escreve na tela cada parte do movimento dos discos entre torre
     mov eax, 4
     mov ebx, 1
     int 0x80
 
     ret
 
-cast_string_int:
+cast_string_int: ; transforma o valor do número de discos no seu real valor inteiro
     mov eax, 0
     mov ebx, 0
 
@@ -163,7 +165,7 @@ cast_string_int:
         mov byte [num_discos + 1], 0
         ret
 
-cast_int_string:
+cast_int_string: ; transforma o valor inteiro em seu caracter na tabela ascii
    
     mov eax, [num_discos]
     mov ebx, 10
@@ -190,7 +192,7 @@ cast_int_string:
 
         ret
 
-diminuir_num_discos:
+diminuir_num_discos: ; diminui o número de discos em 1 antes de chamada recursiva
     
 
     call cast_string_int
@@ -201,7 +203,7 @@ diminuir_num_discos:
 
     ret
 
-aumentar_num_discos:
+aumentar_num_discos: ; aumenta o número de discos em 1 após a chamada recursiva
     
     call cast_string_int
     mov eax, [num_discos]
@@ -211,7 +213,7 @@ aumentar_num_discos:
 
     ret
 
-trocar_destino_auxiliar:
+trocar_destino_auxiliar: ; inverte a torre auxiliar com a destino (faz parte da recursão do programa)
     mov al, [torre_destino]
     mov bl, [torre_auxiliar]
     mov [torre_auxiliar], al
@@ -219,7 +221,7 @@ trocar_destino_auxiliar:
 
     ret
 
-trocar_auxiliar_origem:
+trocar_auxiliar_origem: ; inverte a torre auxiliar com a origem (faz parte da recursão do programa)
     mov al, [torre_origem]
     mov bl, [torre_auxiliar]
     mov [torre_auxiliar], al
@@ -227,7 +229,12 @@ trocar_auxiliar_origem:
     
     ret
 
-encerrarPrograma:
+encerrarPrograma: ; escrever na tela "Concluído!" e terminar o programa 
+    mov eax, 4
+    mov ebx, 1
+    mov ecx, concluido
+    mov edx, tam_concluido
+    int 0x80
 
     mov eax, 1 ; identificador da chamada sys_exit
     mov ebx, 0  ; sem erros 
