@@ -1,4 +1,5 @@
 **TORRE DE HANOI**
 
-_O jogo "Torre de Hanoi" é um desafio mundialmente conhecido. Esse código escrito em assembly NASM x86 resolve a torre com 1 até 99 discos._
+_O jogo "Torre de Hanoi" é um desafio mundialmente conhecido, saiba mais no link a seguir:  [hanoi](https://en.wikipedia.org/wiki/Tower_of_Hanoi). 
+Esse código escrito em assembly NASM x86 resolve a torre com 1 até 99 discos._
 
