@@ -4,9 +4,9 @@
 ![hanoi](https://github.com/user-attachments/assets/42bcde2d-eba5-42b2-ba22-18a82108101b)
 
 
-O jogo "Torre de Hanoi" é um desafio mundialmente conhecido, saiba mais no link a seguir: [hanoi](https://pt.wikipedia.org/wiki/Torre_de_Han%C3%B3i)
+O jogo "Torre de Hanoi" é um desafio de lógica mundialmente conhecido, saiba mais no link a seguir: [hanoi](https://pt.wikipedia.org/wiki/Torre_de_Han%C3%B3i)
 
-_Esse código escrito em assembly NASM x86 resolve a torre com 1 até 99 discos._
+_Esse código escrito em assembly NASM x86 resolve a torre com uma quantidade de 1 até 99 discos._
 
 
 **Como rodar o código**
